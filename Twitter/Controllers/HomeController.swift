@@ -14,8 +14,8 @@ class HomeController : UICollectionViewController, UICollectionViewDelegateFlowL
         User(name: "Karim", user: "@piooneer77", tweet: "The company experienced rapid initial growth. It had 400,000 tweets posted per quarter in 2007. This grew to 100 million tweets posted per quarter in 2008", image:  "logo"),
         User(name: "Ahmed", user: "@Ahmed", tweet: "The company experienced rapid initial growth. It had 400,000 tweets posted per quarter in 2007. This grew to 100 million tweets posted per quarter in 2008", image:  "logo"),
         User(name: "Zian", user: "@Zain", tweet: "The company experienced rapid initial growth. It had 400,000 tweets posted per quarter in 2007. This grew to 100 million tweets posted per quarter in 2008", image:  "logo"),
-        User(name: "Amro", user: "@Amro", tweet: "The company experienced rapid initial growth. It had 400,000 tweets posted per quarter in 2007. This grew to 100 million tweets posted per quarter in 2008", image:  "logo"),
-        User(name: "Monica", user: "@monica", tweet: "The company experienced rapid initial growth. It had 400,000 tweets posted per quarter in 2007. This grew to 100 million tweets posted per quarter in 2008", image:  "logo"),
+        User(name: "Amro", user: "@Amro", tweet: "The company experienced rapid initial growth.", image:  "logo"),
+        User(name: "Monica", user: "@monica", tweet: "The company experienced rapid initial growth. It had 400,000 tweets posted per quarter in 2007. This grew to 100 million tweets posted per quarter in 2008 The company experienced rapid initial growth. It had 400,000 tweets posted per quarter in 2007. This grew to 100 million tweets posted per quarter in 2008 The company experienced rapid initial growth. It had 400,000 tweets posted per quarter in 2007. This grew to 100 million tweets posted per quarter in 2008 The company experienced rapid initial", image:  "logo"),
     ]
 
     override func viewDidLoad() {
@@ -24,6 +24,7 @@ class HomeController : UICollectionViewController, UICollectionViewDelegateFlowL
         collectionView?.register(TweetCell.self, forCellWithReuseIdentifier: "cellId")
         collectionView?.register(HeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerId")
         collectionView?.register(FooterCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footerId")
+        setUpNavigationItems()
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -37,7 +38,13 @@ class HomeController : UICollectionViewController, UICollectionViewDelegateFlowL
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 150)
+        
+        let user = users[indexPath.item]
+        let size = CGSize(width: view.frame.width - 100 , height: 500)
+        let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)]
+        let estimatedFrame = NSString(string: user.tweet!).boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
+
+        return CGSize(width: view.frame.width, height: estimatedFrame.height + 70)
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

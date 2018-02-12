@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let layout = UICollectionViewFlowLayout()
 //        layout.scrollDirection = .horizontal
         let homeController : HomeController = HomeController(collectionViewLayout: layout)
-        window?.rootViewController = homeController
+        window?.rootViewController = UINavigationController(rootViewController: homeController)
     }
     
 }

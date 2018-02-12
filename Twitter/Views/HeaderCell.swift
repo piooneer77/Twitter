@@ -13,6 +13,7 @@ class HeaderCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setViewsConstraints()
+        
     }
     
     private func setViewsConstraints(){

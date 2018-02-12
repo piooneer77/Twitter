@@ -33,6 +33,7 @@ class TweetCell: UICollectionViewCell {
         setUsernameLabelConstraints(label: usernameLabel)
         setBioTextViewConstraints(text: bioTextView)
         setFollowButtonConstraints(button: followButton)
+        setSeperatorViewLayoutConstraints(view: seperatorView)
     }
     
     private func addSubViewsInsideMainViews(){
@@ -41,6 +42,7 @@ class TweetCell: UICollectionViewCell {
         addSubview(usernameLabel)
         addSubview(bioTextView)
         addSubview(followButton)
+        addSubview(seperatorView)
     }
     
     private let imageView : UIImageView = {
@@ -79,7 +81,7 @@ class TweetCell: UICollectionViewCell {
         text.font = UIFont.systemFont(ofSize: 16)
         text.backgroundColor = .clear
         text.isScrollEnabled = false
-//        text.backgroundColor = UIColor.green
+//        text.backgroundColor = UIColor.darkGray
         return text
     }()
     
@@ -98,6 +100,22 @@ class TweetCell: UICollectionViewCell {
 //        button.backgroundColor = .brown
         return button
     }()
+    
+    private let seperatorView : UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.lightGray
+        return view
+    }()
+    
+    private func setSeperatorViewLayoutConstraints(view : UIView){
+        NSLayoutConstraint.activate([
+            view.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
+            view.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
+            view.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
+            view.heightAnchor.constraint(equalToConstant: 1)
+        ])
+    }
     
     private func setImageConstraints(image : UIImageView){
         NSLayoutConstraint.activate([
