@@ -10,8 +10,11 @@ import UIKit
 
 class HeaderCell: UICollectionViewCell {
     
+    let twitterColor = UIColor(displayP3Red: 0.33, green: 0.6, blue: 0.92, alpha: 1.0)
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .white
         setViewsConstraints()
         
     }
@@ -32,7 +35,7 @@ class HeaderCell: UICollectionViewCell {
         label.text = "Who To Follow"
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.textAlignment = .center
-        label.textColor = .cyan
+        label.textColor = twitterColor
 //        label.backgroundColor = UIColor.lightGray
         return label
     }()

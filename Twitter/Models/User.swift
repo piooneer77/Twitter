@@ -6,19 +6,26 @@
 //  Copyright © 2018 syntaxerror. All rights reserved.
 //
 
-import UIKit
+import TRON
+import SwiftyJSON
 
-class User {
+class User : JSONDecodable {
     
+    required init(json: JSON) throws {
+        
+    }
+    
+    var id : Int?
     var name : String?
     var user : String?
-    var tweet : String?
     var image : String?
+    var bio : String?
     
-    init (name: String, user: String, tweet: String, image: String) {
+    init (id: Int, name: String, user: String, image: String, bio : String) {
         self.name = name
         self.image = image
-        self.tweet = tweet
+        self.bio = bio
+        self.id = id
         self.user = user
     }
     
